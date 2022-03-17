@@ -1,0 +1,19 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY ./package.json .
+RUN npm install
+
+COPY . .
+
+RUN npm i -g prisma
+
+WORKDIR /app/prisma
+
+#RUN prisma deploy -e ../config/prod.env
+
+WORKDIR /app
+RUN npm run get-schema-prod
+
+CMD ["npm","run","start"]

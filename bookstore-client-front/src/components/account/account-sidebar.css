@@ -1,0 +1,26 @@
+
+.sidebar-list a{
+    display: flex;
+    padding: 8px 10px;
+    align-items: center;
+    color: #4a4a4a;
+}
+
+.sidebar-list li a:hover{
+    background-color:  #ECECEC;
+}
+
+
+.sidebar-list li a.is-active{
+    background-color:  #ECECEC;
+    color: #000;
+}
+
+.sidebar-list a svg{
+    height: auto;
+    width: 20px;
+}
+
+.sidebar-list a span{
+    margin-left: 8px;
+}

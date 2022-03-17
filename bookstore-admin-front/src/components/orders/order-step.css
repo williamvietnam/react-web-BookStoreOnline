@@ -1,0 +1,15 @@
+.order-status-steps .ant-steps-item.ant-steps-item-finish .ant-steps-item-tail::after{
+    background-color: #59A238;
+  }
+  
+.order-status-steps  .ant-steps-item.ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon .ant-steps-icon-dot{
+    background-color: #59A238;
+  }
+  
+ /* .order-status-steps .ant-steps-item.ant-steps-item-process .ant-steps-item-tail::after{
+    background-color: #59A238;
+  }
+   */
+ .order-status-steps .ant-steps-item.ant-steps-item-process .ant-steps-item-icon .ant-steps-icon .ant-steps-icon-dot{
+    background-color: #59A238;
+  }

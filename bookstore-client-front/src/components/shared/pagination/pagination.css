@@ -1,0 +1,36 @@
+.wn__pagination {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.page-blog .wn__pagination {
+    margin-top: 30px;
+}
+
+.wn__pagination li {
+    display: inline-block;
+}
+
+.wn__pagination li.active a {
+    border-color: #363636;
+    color: #363636;
+}
+
+.wn__pagination li a {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-bottom: 2px solid transparent;
+    color: #777;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 5px;
+    padding: 0 13px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.wn__pagination li a:hover {
+    border-color: #363636;
+    color: #363636;
+}

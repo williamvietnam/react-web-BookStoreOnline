@@ -1,0 +1,629 @@
+#import AuthorOrderByInput, CollectionOrderByInput, UserAddressOrderByInput,BookCategoryCreateInput,BookCategoryUpdateInput from './generated/prisma.graphql'
+#import BookOrderByInput, BookReviewOrderByInput, BookCategoryOrderByInput,BookCategoryWhereInput  from './generated/prisma.graphql'
+#import BookWhereInput, PublisherWhereInput, PublisherOrderByInput, AuthorWhereInput, ProvinceOrderByInput from './generated/prisma.graphql';
+#import OrderWhereInput, OrderOrderbyInput, BookReviewWhereInput, AuthTokenType, UserWhereInput,UserOrderByInput , DiscountCreateInput from './generated/prisma.graphql';
+#import BatchPayload, CollectionUpdateInput,UserAddressWhereInput, UserAddressOrderByInput, DiscountWhereInput ,BookUpdateManyWithoutPublisherInput, DiscountUpdateInput,DiscountOrderByInput from './generated/prisma.graphql';
+
+type User{
+    id: ID!
+    username: String!
+    fullName: String
+    email: String!
+    phone: String
+    gender: Boolean
+    avatar: String
+    birthdate: String
+    password: String!
+    isActive: Boolean!
+    role: UserRole!
+    receiveEmailNotification: Boolean!
+    addresses: [UserAddress!]!
+    orders: [Order!]!
+    userEvents: [UserEvent!]!
+    wishList: [Book!]!
+    reviews: [BookReview!]!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type AuthToken{
+    id: ID!
+    token: String!
+    expiredAfter: Int!
+    type: AuthTokenType!
+    user: User!
+    createdAt: String! 
+    updatedAt: String!
+}
+
+type Collection{
+    id: ID! 
+    name: String!
+    description: String
+    thumbnail: String!
+    books: [Book!]!
+    createdAt: String!
+    updatedAt: String! 
+}
+
+# type Cart{
+#     id!: ID!
+#     customer: User!
+#     items: [Book!]!
+# }
+
+# type CartItem{
+#     id: ID!
+#     item: Book!
+#     quantity: Int!
+#     price: Float! 
+# }
+
+type Order{
+    id: ID!
+    orderNumber: String
+    customer: User!
+    recipientAddress: String!
+    recipientProvince: Province!
+    recipientDistrict: District!
+    recipientWard: Ward!
+    recipientPhone: String!
+    recipientFullName: String!
+    paymentMethod: PaymentMethod!
+    shippingMethod: ShippingMethod!
+    orderStatus: OrderStatus!
+    subTotal: Float! #Gia truoc khi tinh discount
+    grandTotal: Float! #Gia sau khi tinh discount
+    paymentStatus: Boolean!
+    items: [OrderItem!]!
+    receivedDate: String
+    beginDeliveryDate: String
+    createdAt: String!
+    updatedAt: String!
+    pickupQR: String
+    orderSteps: [OrderStep!]! 
+}
+
+type OrderStep{
+    id: ID!
+    orderStatus: OrderStatus!
+    order: Order! 
+    createdAt: String! 
+    updatedAt: String! 
+}
+
+
+type ShippingMethod{
+    id: ID!
+    name: String!
+    createdAt: DateTime! 
+    updatedAt: DateTime!
+}
+
+type OrderItem{
+    id: ID!
+    order: Order!
+    item: Book
+    discount: Float
+    totalItemPrice: Float! # giá 1 sp nhân số lượng
+    price: Float! #giá 1 sp sau khi tính km
+    quantity: Int!
+}
+
+type UserEvent{
+    id: ID!
+    user: User!
+    type: UserEventType!
+    eventDetail: String!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type UserAddress{
+    id: ID!
+    user: User!
+    address: String!
+    province: Province!
+    district: District!
+    ward: Ward!
+    phone: String!
+    fullName: String!
+}
+
+type District{
+    id: ID!
+    name: String!
+    type: String!
+    province: Province!
+}
+
+type Province{
+    id: ID!
+    name: String!
+    type: String!
+}
+
+
+type Ward{
+    id: ID!
+    name: String!
+    type: String!
+    district: District
+}
+
+type Book{
+    id: ID!
+    title: String!
+    description: String
+    shortDescription: String
+    categories: [BookCategory!]!
+    authors: [Author!]!
+    reviews: [BookReview!]!
+    isbn: String!
+    sku: String
+    format: BookFormat!
+    dimensions: String
+    translator: String
+    publishedDate: String
+    collections: [Collection!]!
+    publisher: Publisher!
+    availableCopies: Int!
+    basePrice: Float!
+    pages: Int
+    thumbnail: String!
+    images: String
+    discounts: [Discount!]!
+    createdAt: String!
+    updatedAt: String!
+    avgRating: Float
+
+}
+
+type BookReview{
+    id: ID!
+    reviewHeader: String
+    reviewText: String
+    rating: Int!
+    author: User!
+    book: Book!
+    replies: [BookReviewReply!]!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type BookReviewReply{
+    id: ID!
+    text: String
+    author: User!
+    book: Book!
+    bookReview: BookReview! 
+    createdAt: String!
+    updatedAt: String!
+}
+
+type BookCategory{
+    id: ID!
+    name: String!
+    books(where: BookWhereInput): [Book!]!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type Discount{
+    id: ID!
+    name: String
+    discountRate: Float
+    from: String
+    to: String
+    appliedTo: [Book]!
+    usePercentage: Boolean
+    discountAmount: Float
+}
+
+type Publisher{
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    books(where: BookWhereInput): [Book!]!
+    createdAt: String
+}
+
+type Author{
+    id: ID!
+    realName: String
+    pseudonym: String
+    image: String
+    description: String
+    books(where: BookWhereInput): [Book!]!
+    createdAt: String
+}
+
+type CommonStatistic{
+    orders: Int!
+    customers: Int!
+    income: Float!
+    lowStocks: Int!
+}
+
+enum BookFormat{
+    HardCover
+    PaperBack
+}
+
+enum UserEventType{
+    View
+    Comment
+    Review
+    Order
+}
+
+enum UserRole{
+    User
+    Staff
+    Admin
+}
+
+enum OrderStatus{
+    Ordered
+    Recieved
+    Processing
+    GettingProduct
+    Packaged
+    HandOver
+    Shipping
+    Completed
+    Canceled
+}
+
+type Query{
+    getBooks(where: BookWhereInput,orderBy: BookOrderByInput, first: Int, skip:Int, selection: String): BooksPayload!
+    getBook(id: ID!): Book!
+    getCategories(where: BookCategoryWhereInput, orderBy: BookCategoryOrderByInput, first: Int, skip: Int): [BookCategory!]!
+    getCategoriesPaging(where: BookCategoryWhereInput, orderBy: BookCategoryOrderByInput, first: Int, skip: Int): CategoryPayload!
+    getCategory(id: ID!): BookCategory!
+    getAuthors(where: AuthorWhereInput, orderBy: AuthorOrderByInput, first: Int, skip: Int): [Author!]!
+    getAuthorsPaging(where: AuthorWhereInput, orderBy: AuthorOrderByInput, first: Int, skip: Int): AuthorPayload!
+    getAuthor(id: ID!): Author!
+    getCollections(name: String, orderBy: CollectionOrderByInput, first: Int,skip: Int): GetCollectionsPayload!
+    getCollection(id: ID!): Collection!
+    getBookReviewsByBook(bookId: ID, orderBy: BookReviewOrderByInput, first: Int,skip: Int): GetBookReviewsByBookPayload!
+    getBookReviews(where: BookReviewWhereInput, orderBy: BookReviewOrderByInput, first: Int,skip: Int): GetBookReviewsByBookPayload!
+    getUserAddresses: [UserAddress!]!
+    getUserAddressesAdmin(where: UserAddressWhereInput, orderBy: UserAddressOrderByInput,first: Int,skip: Int,selection: String): UserAddressPayload!
+    getPublishers(where: PublisherWhereInput, orderBy: PublisherOrderByInput, first: Int, skip: Int): [Publisher!]!
+    getPublishersPaging(where: PublisherWhereInput, orderBy: PublisherOrderByInput, first: Int, skip: Int): PublisherPayload!
+    getPublisher(id: ID!): Publisher!
+    getItemStockQty(id: ID!): GetItemStockQtyPayload!
+    getProvinces: [Province!]!
+    getDistricts(provinceId: ID!): [District!]!
+    getWards(districtId: ID!): [Ward!]!
+    getOrders(where: OrderWhereInput, orderBy: OrderOrderByInput,first: Int,skip: Int,selection: String): OrderPayload!
+    getOrderById(id: ID!): Order!
+    getReviewRepliesByReview(reviewId: ID!): [BookReviewReply!]!
+    getWishList: GetWishListPayload!
+    getBestSeller(first: Int! ,skip: Int, dateFrom: String, dateTo: String): BooksPayload!
+    getBestSellerList(first: Int! ,skip: Int, dateFrom: String, dateTo: String): BestSellerListPayload!
+    getUsers(where: UserWhereInput,orderBy: UserOrderByInput, first: Int, skip:Int, selection: String): UsersPayload!
+    getUserById(id: ID!): User!
+    getCommonStatistics: CommonStatistic!
+
+    getDiscounts(where: DiscountWhereInput, orderBy: DiscountOrderByInput, first: Int, skip: Int): DiscountPayload!
+    getDiscountById(id: ID!): Discount!
+}
+
+
+type PublisherPayload{
+    publishers: [Publisher!]!
+    totalCount: Int
+}
+
+type AuthorPayload{
+    authors: [Author!]!
+    totalCount: Int
+}
+
+type DiscountPayload{
+    discounts: [Discount!]!
+    totalCount: Int
+}
+
+type UserAddressPayload{
+    addresses: [UserAddress!]!
+    totalCount: Int
+}
+
+type UsersPayload{
+    users: [User!]!
+    totalCount: Int
+}
+
+type CategoryPayload{
+    categories: [BookCategory!]!
+    totalCount: Int
+}
+
+type GetCollectionsPayload{
+    collections: [Collection!]!
+    totalCount: Int
+}
+
+type Mutation{
+    createUserAdmin(data: UserSignupInput!): User!
+    login(data: UserLoginInput!): AuthPayload!
+    updateUser(data: CustomUserUpdateInput!): User!
+    updateUserAdmin(id: ID!, data: CustomUserUpdateInputAdmin!): User!
+    createBook(data: BookCreateInput!): Book!
+    updateBook(id: ID!, data: BookUpdateInput!): Book!
+    createCollection(data: CollectionCreateInput!): Collection!
+    updateCollection(id: ID!, data: CollectionUpdateInput!): Collection!
+    createUserAddress(data: UserAddressCreateInput!, user: ID!): UserAddress!
+    updateUserAddress(id: ID!,data: UserAddressUpdateInput!): UserAddress!
+    createBookReview(data: BookReviewCreateInput!): BookReview!
+    updateBookReview(id: ID!,data: BookReviewUpdateInput!): BookReview!
+    createBookCategory(data: BookCategoryCreateInput!): BookCategory!
+    updateBookCategory(id: ID!,data: BookCategoryUpdateInput!): BookCategory!
+    createPublisher(data: PublisherCreateInput!): Publisher!
+    updatePublisher(id: ID!,data: PublisherUpdateInput!): Publisher!
+    createAuthor(data: AuthorCreateInput!): Author!
+    updateAuthor(id: ID!,data: AuthorUpdateInput!): Author!
+    deleteAuthor(id: ID!): Author!
+    createOrder(data: OrderCreateInput!): Order!
+    updateOrderStatus(orderId: ID!,orderStatus: OrderStatus!): Order!
+    updatePaymentStatus(orderId: ID!,paymentStatus: Boolean!): Order!
+    updateOrderAddress(orderId: ID!,data: OrderAddressUpdateInput!): Order!
+    createReviewReply(data: ReviewReplyCreateInput!): BookReviewReply!
+    deleteUserAddress(id: ID!): UserAddress!
+    addBookToWishList(bookId: ID!): AddBookToWishListPayload!
+    removeBookFromWishList(bookId: ID!): AddBookToWishListPayload!
+    createPasswordToken(email: String!): CreatePasswordTokenPayload!
+    resetPassword(passwordToken: String!, password: String!): CreatePasswordTokenPayload!
+
+    deleteBooks(id: [ID!]!): BatchPayload!
+    deleteCategories(id: [ID!]!): BatchPayload!
+    deleteReviews(id: [ID!]!): BatchPayload!
+    deleteCollections(id: [ID!]!): BatchPayload!
+
+    createDiscount(data: DiscountCreateInput!): Discount!
+    updateDiscount(id: ID!, data: DiscountUpdateInput!): Discount!
+    deleteDiscounts(id: [ID!]!): BatchPayload!
+    deleteAuthors(id: [ID!]!): BatchPayload!
+    deletePublishers(id: [ID!]!): BatchPayload!
+}
+
+input OrderAddressUpdateInput{
+    recipientAddress: String
+    recipientFullName: String
+    recipientProvince: ID
+    recipientWard: ID
+    recipientDistrict: ID
+    recipientPhone: String
+}
+
+type BestSellerListPayload{
+    entities: [BestSellerListResponse!]!
+    totalCount: Int
+}
+
+type BestSellerListResponse{
+    id: ID!
+    title: String!
+    sku: String!
+    totalPrice: Float!
+    totalQuantity: Int!
+}
+
+type CreatePasswordTokenPayload{
+    statusCode: Int!
+    message: String
+    data: String
+}
+
+type GetWishListPayload{
+    statusCode: Int!
+    message: String
+    data: BooksPayload
+}
+
+type AddBookToWishListPayload{
+    statusCode: Int!
+    message: String
+    data: String
+}
+
+input ReviewReplyCreateInput{
+    text: String
+    book: ID!
+    bookReview: ID!
+}
+
+type OrderPayload{
+    orders: [Order!]!
+    totalCount: Int
+}
+
+input OrderCreateInput{
+    shippingAddress: ID!
+    shippingMethod: ID!
+    paymentMethod: ID!
+    items: [OrderItemCreateInput!]!
+}
+
+input OrderItemCreateInput{
+    book: ID!
+    quantity: Int!
+}
+
+
+type Subscription{
+    user: User!
+}
+
+type GetBookReviewsByBookPayload{
+    bookReviews: [BookReview!]!
+    totalCount: Int
+    avgScore: Float
+    fiveStar: Int
+    fourStar: Int
+    threeStar: Int
+    twoStar: Int
+    oneStar: Int
+}
+
+type BooksPayload{
+    books: [Book!]!
+    totalCount: Int
+}
+
+type AuthPayload{
+    statusCode: Int
+    message: String
+    user: User
+    token: String
+}
+
+type GetItemStockQtyPayload{
+    qty: Int!
+    id: ID!
+}
+
+input AuthorCreateInput{
+    realName: String
+    pseudonym: String
+    image: String
+    description: String
+}
+
+input PublisherCreateInput{
+    name: String!
+    description: String
+    image: String
+}
+
+input PublisherUpdateInput{
+    name: String
+    description: String
+    image: String
+    books: BookUpdateManyWithoutPublisherInput
+}
+
+input BookReviewCreateInput{
+    book: ID!
+    reviewHeader: String
+    reviewText: String
+    rating: Int!
+}
+
+input BookReviewUpdateInput{
+    book: ID!
+    reviewHeader: String
+    reviewText: String
+    rating: Int
+}
+
+input UserAddressCreateInput{
+    address: String!
+    phone: String!
+    fullName: String!
+    province: ID!
+    district: ID!
+    ward: ID!
+}
+
+input UserAddressUpdateInput{
+    address: String
+    ward: ID
+    district: ID
+    province: ID
+    phone: String
+    fullName: String
+}
+
+
+input CollectionCreateInput{
+    name: String!
+    description: String
+    thumbnail: String!
+}
+
+input CustomUserUpdateInput{
+    fullName: String
+    changePassword: Boolean
+    phone: String
+    gender: Boolean
+    birthdate: String
+    password: String
+    currentPassword: String
+}
+
+input CustomUserUpdateInputAdmin{
+    fullName: String
+    changePassword: Boolean
+    phone: String
+    gender: Boolean
+    birthdate: String
+    password: String
+    isActive: Boolean
+    role: UserRole
+    email: String
+}
+
+
+input BookUpdateInput{
+    title: String
+    description: String
+    shortDescription: String
+    categories: [ID!]
+    translator: String
+    authors: [ID!]
+    isbn: String
+    sku: String
+    format: BookFormat
+    dimensions: String
+    publishedDate: String
+    publisher: ID
+    availableCopies: Int
+    basePrice: Float
+    pages: Int
+    thumbnail: String
+    images: String
+}
+
+input BookCreateInput{
+    title: String!
+    description: String
+    shortDescription: String
+    categories: [ID!]!
+    translator: String
+    authors: [ID!]!
+    isbn: String!
+    sku: String!
+    format: BookFormat!
+    dimensions: String
+    publishedDate: String
+    publisher: ID!
+    availableCopies: Int!
+    basePrice: Float!
+    pages: Int
+    thumbnail: String!
+    images: String
+}
+
+input UserLoginInput{
+    email: String!
+    password: String!
+}
+
+input UserSignupInput{
+    username: String!
+    password: String!
+    role: UserRole
+    fullName: String
+    email: String!
+    phone: String
+    gender: Boolean
+    avatar: String
+    birthdate: String
+    receiveEmailNotification: Boolean
+    isActive: Boolean
+}

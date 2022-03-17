@@ -1,0 +1,46 @@
+/*--------------------------
+  Error Styles
+----------------------------*/
+.error__inner .error__content h2 {
+    color: #2e2e2e;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 30px 0 0;
+    text-transform: uppercase;
+  }
+  .error__inner .error__content p {
+    font-style: italic;
+    color: #333;
+    margin: 0 0 10px; }
+  .error__inner .error__content .form__box {
+    border-bottom: 2px solid #222;
+    height: 50px;
+    margin: 30px auto 0;
+    max-width: 60%;
+    position: relative; }
+    .error__inner .error__content .form__box input {
+      background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+      border: 0 none;
+      height: 100%;
+      padding-left: 20px;
+      padding-right: 80px;
+      width: 100%;
+      outline: none; }
+    .error__inner .error__content .form__box button {
+      background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+      border: 0 none;
+      font-size: 18px;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50px; }
+  
+  @media only screen and (max-width: 575px) {
+    .error__logo a img {
+      width: 74%; }
+    .error__inner .error__content h2 {
+      font-size: 27px;
+      margin: 22px 0; }
+    .error__inner .error__content .form__box {
+      max-width: 100%; } }

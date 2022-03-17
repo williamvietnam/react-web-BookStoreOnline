@@ -1,0 +1,33 @@
+{
+  "name": "bookstore-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js --ext graphql,js --exec babel-node",
+    "start": "babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "get-schema": "graphql get-schema --dotenv config/dev.env --project prisma",
+    "get-schema-prod": "graphql get-schema --dotenv config/prod.env --project prisma_prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.42",
+    "@sendgrid/mail": "^6.5.4",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "graphql-cli": "^3.0.14",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.2",
+    "prisma-binding": "^2.3.16",
+    "uuid": "^7.0.2"
+  }
+}

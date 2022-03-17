@@ -1,0 +1,22 @@
+{
+    "projects": {
+        "prisma": {
+            "schemaPath": "./src/generated/prisma.graphql",
+            "extensions": {
+                "prisma": "prisma/prisma.yml",
+                "endpoints": {
+                    "default": "http://localhost:4466/bookstore/dev"
+                }
+            }
+        },
+         "prisma_prod": {
+            "schemaPath": "./src/generated/prisma.graphql",
+            "extensions": {
+                "prisma": "prisma/prisma.yml",
+                "endpoints": {
+                    "default": "http://18.191.134.82:4466/bookstore/prod"
+                }
+            }
+        }
+    }
+}

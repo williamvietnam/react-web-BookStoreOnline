@@ -1,0 +1,8 @@
+.main-header{
+    width: calc(100% - 210px);
+    height: 61px;
+    left: 210px;
+    position: absolute;
+    top:0;
+    background-color: #222d32;
+}

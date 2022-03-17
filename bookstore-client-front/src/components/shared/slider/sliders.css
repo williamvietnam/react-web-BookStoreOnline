@@ -1,0 +1,416 @@
+.slick-prev:before, .slick-next:before { 
+  color:red !important;
+}
+
+.slick-prev { 
+  top: 39% !important;
+}
+
+.slick-next { 
+  top: 39% !important;
+}
+
+
+
+/*-------------------------
+    Slider Styles
+  -------------------------*/
+  .slide.align__center--left {
+    align-items: center;
+    display: flex; }
+  .slider__content {
+    margin-top: 60px;
+  }
+  .contentbox > h3 {
+    color: #ce7852;
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  .slider--15 .slide .slider__content h2.another {
+    font-size: 60px;
+  }
+  .slide .slider__content h2 {
+    color: #3c3c3c;
+    font-size: 68px;
+    font-family: poppins;
+    font-weight: 700;
+    line-height: 1.2; }
+  .slide .slider__content h1 {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 20px; }
+    .slide .slider__content h1 span {
+      color: #e59285; }
+  .slide .slider__content p {
+    color: white;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 0 0 50px;
+    max-width: 725px; }
+  .slide .slider__content a.shopbtn {
+    color: #333;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 30px;
+    margin-top: 30px;
+    text-transform: uppercase;
+  }
+    .slide .slider__content a.shopbtn::after {
+      background: rgba(0, 0, 0, 0) url("/images/icons/links_static8.png") repeat scroll 100% 50%;
+      content: "";
+      display: inline-block;
+      height: 11px;
+      margin-bottom: 0px;
+      margin-left: 25px;
+      vertical-align: middle;
+      width: 44px; }
+    .slide .slider__content a.shopbtn:hover {
+      color: #e59285; }
+      .slider--15 .slide .slider__content h2 span {
+        color: #ce7852; }
+    .slider--15 .slide .slider__content h1 {
+      color: #3c3c3c;
+      font-family: "tex_gyre_adventorbold";
+      font-size: 80px;
+      line-height: 1;
+      margin-bottom: 50px; }
+    .slider--15 .slide .slider__content p {
+        color: #3c3c3c;
+        font-size: 14px;
+        line-height: 25px;
+        margin: 15px 0 0;
+        max-width: 450px;
+      }
+      .slider--15 .slide .slider__content a:hover::after {
+        background-position: 0 0; }
+      .slider--15 .slide .slider__content a:hover {
+        color: #ce7852; }
+  .slide__arrow01 {
+    position: relative; }
+    .slide__arrow01 .owl-nav div {
+      left: 30px;
+      position: absolute;
+      top: 48%;
+      opacity: 0; }
+      .slide__arrow01 .owl-nav div i {
+        font-size: 20px; }
+      .slide__arrow01 .owl-nav div.owl-next {
+        left: auto;
+        right: 30px; }
+    .slide__arrow01:hover .owl-nav div {
+      left: 10px;
+      opacity: 1; }
+    .slide__arrow01:hover .owl-nav div.owl-next {
+      right: 10px;
+      left: auto; }
+  .slide__arrow01.owl-theme .owl-nav [class*="owl-"] {
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    color: white;
+    cursor: pointer;
+    display: block;
+    height: 45px;
+    line-height: 50px;
+    padding: 0;
+    text-align: center;
+    transition: all 300ms ease-in 0s;
+    width: 45px;
+    z-index: 9; }
+  .slide__arrow01.owl-theme .owl-nav [class*="owl-"]:hover {
+    color: #e59285;
+    transition: all 300ms ease-in 0s;
+    border: 1px solid #e59285; }
+  .slide__activation.owl-theme .owl-nav {
+    margin-top: 0; }
+  .owl-item.active .animation__style01 .slider__content h2 {
+    -webkit-animation: 800ms ease-in-out 0s normal none 1 running zoomInUp;
+            animation: 800ms ease-in-out 0s normal none 1 running zoomInUp; }
+  .owl-item.active .animation__style01 .slider__content h3 {
+    -webkit-animation: 800ms ease-in-out 0s normal none 1 running zoomInUp;
+            animation: 800ms ease-in-out 0s normal none 1 running zoomInUp; }
+  .owl-item.active .animation__style01 .slider__content h1 {
+    -webkit-animation: 1000ms ease-in-out 0s normal none 1 running zoomInUp;
+            animation: 1000ms ease-in-out 0s normal none 1 running zoomInUp; }
+  .owl-item.active .animation__style01 .slider__content p {
+    -webkit-animation: 1200ms ease-in-out 0s normal none 1 running zoomInUp;
+            animation: 1200ms ease-in-out 0s normal none 1 running zoomInUp; }
+  .owl-item.active .animation__style01 .slider__content a {
+    -webkit-animation: 1400ms ease-in-out 0s normal none 1 running zoomInUp;
+            animation: 1400ms ease-in-out 0s normal none 1 running zoomInUp; }
+  .owl-item.active .animation__style02 .slider__content h2 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style02 .slider__content h1 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style02 .slider__content p {
+    -webkit-animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style02 .slider__content a {
+    -webkit-animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style03 .slider__content h1 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style03 .slider__content p {
+    -webkit-animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style03 .slider__content a {
+    -webkit-animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style04 .slider__content h2 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style04 .slider__content h3 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style04 .slider__content h1 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style04 .slider__content p {
+    -webkit-animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style04 .slider__content a {
+    -webkit-animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style04 .slider__content .sale {
+    -webkit-animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style05 .slider__content h2 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style05 .slider__content h1 {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style05 .slider__content p {
+    -webkit-animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 2200ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style05 .slider__content a {
+    -webkit-animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown;
+            animation: 1800ms ease-in-out 0s normal none 1 running bounceInDown; }
+  .owl-item.active .animation__style06 .slider__content h2 {
+    -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 500ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style06 .slider__content h1 {
+    -webkit-animation: 700ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 700ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style06 .slider__content p {
+    -webkit-animation: 900ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 900ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style06 .slider__content a {
+    -webkit-animation: 1000ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 1000ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style06 .slider__content span {
+    -webkit-animation: 1200ms ease-in-out 0s normal none 1 running fadeInLeft;
+            animation: 1200ms ease-in-out 0s normal none 1 running fadeInLeft; }
+  .owl-item.active .animation__style07 .slider__content h2 {
+    -webkit-animation: 900ms ease-in-out 0s normal none 1 running flipInX;
+            animation: 900ms ease-in-out 0s normal none 1 running flipInX; }
+  .owl-item.active .animation__style07 .slider__content h1 {
+    -webkit-animation: 1000ms ease-in-out 0s normal none 1 running flipInX;
+            animation: 1000ms ease-in-out 0s normal none 1 running flipInX; }
+  .owl-item.active .animation__style07 .slider__content p {
+    -webkit-animation: 1200ms ease-in-out 0s normal none 1 running flipInX;
+            animation: 1200ms ease-in-out 0s normal none 1 running flipInX; }
+  .owl-item.active .animation__style07 .slider__content a {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running flipInX;
+            animation: 1500ms ease-in-out 0s normal none 1 running flipInX; }
+  .owl-item.active .animation__style07 .slider__content span {
+    -webkit-animation: 1900ms ease-in-out 0s normal none 1 running flipInX;
+            animation: 1900ms ease-in-out 0s normal none 1 running flipInX; }
+  .owl-item.active .animation__style08 .slider__content h2 {
+    -webkit-animation: 900ms ease-in-out 0s normal none 1 running slideInDown;
+            animation: 900ms ease-in-out 0s normal none 1 running slideInDown; }
+  .owl-item.active .animation__style08 .slider__content h1 {
+    -webkit-animation: 1200ms ease-in-out 0s normal none 1 running slideInDown;
+            animation: 1200ms ease-in-out 0s normal none 1 running slideInDown; }
+  .owl-item.active .animation__style08 .slider__content p {
+    -webkit-animation: 1300ms ease-in-out 0s normal none 1 running slideInDown;
+            animation: 1300ms ease-in-out 0s normal none 1 running slideInDown; }
+  .owl-item.active .animation__style08 .slider__content a {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running slideInDown;
+            animation: 1500ms ease-in-out 0s normal none 1 running slideInDown; }
+  .owl-item.active .animation__style08 .slider__content span {
+    -webkit-animation: 1400ms ease-in-out 0s normal none 1 running slideInDown;
+            animation: 1400ms ease-in-out 0s normal none 1 running slideInDown; }
+  .owl-item.active .animation__style09 .slider__content h2 {
+    -webkit-animation: 900ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 900ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style09 .slider__content h1 {
+    -webkit-animation: 1200ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 1200ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style09 .slider__content p {
+    -webkit-animation: 1300ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 1300ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style09 .slider__content a {
+    -webkit-animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 1500ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style09 .slider__content span {
+    -webkit-animation: 1400ms ease-in-out 0s normal none 1 running fadeInRight;
+            animation: 1400ms ease-in-out 0s normal none 1 running fadeInRight; }
+  .owl-item.active .animation__style10 .slider__content h2 {
+    -webkit-animation: 1200ms ease-in-out 0s normal none 1 running zoomInDown;
+            animation: 1200ms ease-in-out 0s normal none 1 running zoomInDown; }
+  .owl-item.active .animation__style10 .slider__content h3 {
+    -webkit-animation: 800ms ease-in-out 0s normal none 1 running zoomInDown;
+            animation: 800ms ease-in-out 0s normal none 1 running zoomInDown; }
+  .owl-item.active .animation__style10 .slider__content h1 {
+    -webkit-animation: 1000ms ease-in-out 0s normal none 1 running zoomInDown;
+            animation: 1000ms ease-in-out 0s normal none 1 running zoomInDown; }
+  .owl-item.active .animation__style10 .slider__content p {
+    -webkit-animation: 1200ms ease-in-out 0s normal none 1 running zoomInRight;
+            animation: 1200ms ease-in-out 0s normal none 1 running zoomInRight; }
+  .owl-item.active .animation__style10 .slider__content a {
+    -webkit-animation: 1400ms ease-in-out 0s normal none 1 running zoomInUp;
+            animation: 1400ms ease-in-out 0s normal none 1 running zoomInUp; }
+  
+  .slider__fixed--height {
+    width: 100%;
+    height: 860px; }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .slider__group {
+      margin: 0 30px;
+      width: auto;
+      padding-left: 15px;
+      padding-right: 15px; } }
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .slider__fixed--height {
+      padding: 150px 0 !important;
+      height: auto !important; }
+    .fullscreen {
+      min-height: auto !important;
+      padding: 150px 0 !important; }
+    .page-slider {
+      padding-right: 0; }
+    .slider--six .slide .slider__content.slidebox .contentbox {
+      margin: 0;
+      padding: 0; }
+    .slider__group {
+      width: 100%; }
+    .slider__group .slider__area .slide.section__height {
+      height: auto;
+      padding: 72px 30px; }
+    .slider--15 .slide .slider__content h2 {
+      font-size: 56px; }
+    .slider--15 .slide .slider__content h1 {
+      font-size: 73px;
+      line-height: 101px; }
+      .slider--15 .slide .slider__content {
+    margin-top: 40px;
+    padding-left: 0;
+  }
+    .slider--15 .slide .slider__content h1 {
+      margin-bottom: 27px; }
+    .slider--15 .slide .slider__content p {
+      margin: 0 0 34px; } }
+  @media only screen and (max-width: 767px) {
+    .slider__fixed--height {
+      height: auto !important;
+      padding: 100px 0 !important; }
+  .arrows_style .owl-nav div.owl-prev {
+    left: 0;
+  }
+  .arrows_style .owl-nav div.owl-next {
+    left: auto;
+    right: 0;
+  }
+  .furniture--4.border--round {
+    margin-left: 0;
+  }
+  .header__area .header__sidebar__right {
+    margin-right: 50px;
+  }
+  .header__area .header__sidebar__right > li.wishlist {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .header__area .header__sidebar__right > li.shopcart {
+    padding-right: 10px;
+  }
+  .newsletter__block p {
+    padding: 0 50px 60px;
+  }
+  .wn__newsletter__area.bg-image--2 {
+    background: #f6f6f6 none repeat scroll 0 0;
+  }
+  .newsletter__block .newsletter__box {
+    max-width: 280px;
+  }
+  .wn__newsletter__area .col-lg-7.offset-lg-5.col-md-12.col-12 {
+    padding-bottom: 80px;
+    padding-top: 80px;
+  }
+  .product__nav a {
+    padding: 0 15px;
+  }
+  .product__indicator--4.arrows_style.owl-theme .owl-nav [class*="owl-"] {
+    top: 42%;
+  }
+  .post__itam {
+    margin-bottom: 30px;
+  }
+  .wn__recent__post {
+    padding-bottom: 50px;
+  }
+  .copy__right__inner {
+    margin-bottom:15px;
+  }
+  .copy__right__inner,.payment {
+    text-align: center!important;
+  }
+    .slider--five .slide .slider__content .contentbox::after,
+    .slider--four .slide .slider__content .contentbox.contentbox--2 {
+      border: 0 none; }
+    .slide .slider__content h1,
+    .slider__group .slider__area .slide .slider__content h1,
+    .slider__group .slider__area.slider--12 .slide .slider__content h1,
+    .slider--15 .slide .slider__content h1,
+    .slider-page-one .sl__item .slider__content h1,
+    .slider-page-two .sl__item .slider__content h1 {
+      font-size: 42px; }
+    .slide .slider__content h2,
+    .slider__group .slider__area .slide .slider__content h3,
+    .slider__group .slider__area.slider--12 .slide .slider__content h3,
+    .slider--15 .slide .slider__content h2,
+    .slider-page-one .sl__item .slider__content h2,
+    .slider-page-two .sl__item .slider__content h2 {
+      font-size: 50px; }
+    .slider-page-one .sl__item .slider__content p,
+    .slider-page-two .sl__item .slider__content p {
+      max-width: 100%; }
+    .slide .slider__content p {
+      margin: 0 0 22px; }
+    .main-page-content {
+      padding-left: 0;
+      padding-right: 0; }
+    .page-slider {
+      padding-right: 0; }
+    .slider__group {
+      width: 100%; }
+    .slider__group .slider__area .slide.section__height {
+      height: auto;
+      padding: 72px 30px; }
+  .slider__content {
+    margin-top: 55px;
+  }
+  .slider--15 .slide .slider__content h2.another {
+    font-size: 50px;
+  }
+   }
+  @media only screen and (max-width: 575px) {
+  .slider--15 .slide .slider__content h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+  .slider--15 .slide .slider__content h2.another {
+    font-size: 46px;
+  }
+    .slider--15 .slide .slider__content h1 {
+      font-size: 36px;
+      margin-bottom: 30px; } }

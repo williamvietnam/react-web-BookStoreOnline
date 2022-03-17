@@ -1,0 +1,293 @@
+type User{
+    id: ID! @id
+    username: String! @unique
+    fullName: String
+    email: String! @unique
+    phone: String @unique
+    avatar: String @default(value: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png")
+    gender: Boolean
+    birthdate: DateTime
+    password: String!
+    isActive: Boolean!
+    role: UserRole! @default(value: User)
+    receiveEmailNotification: Boolean!
+    addresses: [UserAddress!]! @relation(name: "AddressToUser", onDelete: CASCADE)
+    orders: [Order!]! @relation(name: "OrderToUser", onDelete: CASCADE)
+    userEvents: [UserEvent!]! @relation(name: "EventToUser", onDelete: CASCADE)
+    wishList: [Book!]!
+    authToken: [AuthToken!]! @relation(name: "AuthTokenToUser", onDelete: CASCADE)
+#    cart: Cart! @relation(name: "CartToUser", onDelete: CASCADE)
+    reviews: [BookReview!]! @relation(name: "ReviewToUser", onDelete: CASCADE)
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type AuthToken{
+    id: ID! @id
+    token: String! @unique
+    expiredAfter: Int!
+    type: AuthTokenType!
+    user: User! @relation(name: "AuthTokenToUser", onDelete: SET_NULL)
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Collection{
+    id: ID! @id
+    name: String!
+    description: String
+    thumbnail: String!
+    books: [Book!]! @relation(name: "BookToCollection")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+# type Cart{
+#     id!: ID!
+#     customer: User!
+#     items: [Book!]!
+# }
+
+# type CartItem{
+#     id: ID!
+#     item: Book!
+#     quantity: Int!
+#     price: Float! 
+# }
+
+type Order{
+    id: ID! @id
+    orderNumber: String
+    customer: User! @relation(name: "OrderToUser", onDelete: SET_NULL)
+    recipientAddress: String!
+    recipientProvince: Province! @relation(name: "ProvinceToOrder", onDelete: SET_NULL)
+    recipientDistrict: District! @relation(name: "DistrictToOrder", onDelete: SET_NULL)
+    recipientWard: Ward! @relation(name: "WardToOrder", onDelete: SET_NULL)
+    recipientPhone: String!
+    recipientFullName: String!
+    paymentMethod: PaymentMethod! @relation(name: "PaymentMethodToOrder", onDelete: SET_NULL)
+    shippingMethod: ShippingMethod! @relation(name: "ShippingMethodToOrder", onDelete: SET_NULL)
+    orderStatus: OrderStatus!
+    paymentStatus: Boolean!
+    items: [OrderItem!]! @relation(name: "OrderItemToOrder", onDelete: CASCADE)
+    discount: Float! @default(value: 0)
+    subTotal: Float! #Gia truoc khi tinh discount
+    grandTotal: Float! #Gia sau khi tinh discount
+    receivedDate: DateTime
+    beginDeliveryDate: DateTime
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    pickupQR: String
+    orderSteps: [OrderStep!]! @relation(name: "OrderStepToOrder", onDelete: CASCADE)
+}
+
+type OrderStep{
+    id: ID! @id
+    orderStatus: OrderStatus!
+    order: Order! @relation(name: "OrderStepToOrder", onDelete: SET_NULL)
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type PaymentMethod{
+    id: ID! @id
+    name: String!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type ShippingMethod{
+    id: ID! @id
+    name: String!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type OrderItem{
+    id: ID! @id
+    order: Order! @relation(name: "OrderItemToOrder", onDelete: SET_NULL)
+    item: Book @relation(name: "OrderItemToBook")
+    discount: Float @default(value: 0)
+    basePrice: Float
+    price: Float! #giá 1 sp
+    totalItemPrice: Float! # giá 1 sp nhân số lượng
+    quantity: Int!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type UserEvent{
+    id: ID! @id
+    user: User! @relation(name: "EventToUser", onDelete: SET_NULL)
+    type: UserEventType!
+    eventDetail: String!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type UserAddress{
+    id: ID! @id
+    user: User! @relation(name: "AddressToUser", onDelete: SET_NULL)
+    address: String!
+    phone: String!
+    province: Province! @relation(name: "AddressToProvince", onDelete: SET_NULL)
+    district: District! @relation(name: "AddressToDistrict", onDelete: SET_NULL)
+    ward: Ward! @relation(name: "AddressToWard", onDelete: SET_NULL)
+    fullName: String!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Book{
+    id: ID! @id
+    title: String!
+    description: String
+    shortDescription: String
+    categories: [BookCategory!]! @relation(name: "BookToCategory")
+    authors: [Author!]! @relation(name: "BookToAuthor")
+    reviews: [BookReview!]! @relation(name: "ReviewToBook", onDelete: CASCADE)
+    isbn: String!
+    sku: String
+    # photos: [StaticResource!]!
+    avgRating: Float @default(value: 0)
+    translator: String
+    format: BookFormat!
+    dimensions: String
+    publishedDate: DateTime
+    collections: [Collection!]! @relation(name: "BookToCollection")
+    publisher: Publisher @relation(name: "BookToPublisher")
+    availableCopies: Int!
+    basePrice: Float!
+    pages: Int
+    thumbnail: String!
+    images: String
+    discounts: [Discount!]! @relation(name: "DiscountToBook")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+# type StaticResource{
+#     id: ID! @id
+#     url: String!
+#     createdAt: DateTime @createdAt
+#     updatedAt: DateTime @createdAt
+# }
+type BookReview{
+    id: ID! @id
+    reviewHeader: String
+    reviewText: String
+    rating: Int!
+    author: User! @relation(name: "ReviewToUser")
+    book: Book @relation(name: "ReviewToBook")
+    replies: [BookReviewReply!]! @relation(name: "ReplyToReview")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type BookReviewReply{
+    id: ID! @id
+    text: String
+    author: User!
+    book: Book
+    bookReview: BookReview @relation(name: "ReplyToReview")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type BookCategory{
+    id: ID! @id
+    name: String!
+    books: [Book!]! @relation(name: "BookToCategory")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Discount{
+    id: ID! @id
+    name: String
+    discountRate: Float    
+    from: DateTime
+    to: DateTime
+    appliedTo: [Book]! @relation(name: "DiscountToBook")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    usePercentage: Boolean
+    discountAmount: Float
+}
+
+type Publisher{
+    id: ID! @id
+    name: String!
+    description: String
+    image: String
+    books: [Book!]! @relation(name: "BookToPublisher")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Author{
+    id: ID! @id
+    realName: String
+    pseudonym: String
+    image: String
+    description: String
+    books: [Book!]! @relation(name: "BookToAuthor")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type District{
+    id: ID! @id
+    name: String!
+    type: String!
+    province: Province! @relation(name: "DistrictToProvince")
+}
+
+type Province{
+    id: ID! @id
+    name: String!
+    type: String!
+}
+
+
+type Ward{
+    id: ID! @id
+    name: String!
+    type: String!
+    district: District @relation(name: "WardToDistrict")
+}
+
+enum BookFormat{
+    HardCover
+    PaperBack
+}
+
+enum AuthTokenType{
+    AccessToken
+    PasswordToken
+    ActivationToken
+}
+
+enum UserEventType{
+    View
+    Comment
+    Review
+    Order
+}
+
+enum UserRole{
+    User
+    Staff
+    Admin
+}
+
+enum OrderStatus{
+    Ordered
+    Processing
+    GettingProduct
+    Packaged
+    HandOver
+    Shipping
+    Completed
+    Canceled
+}
