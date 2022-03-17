@@ -1,4 +1,3 @@
-# final-year-project
 
 #### Cách chạy project ####
 
